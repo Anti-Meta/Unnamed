@@ -13,7 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import nl.antimeta.unnamed.UnnamedGame;
 
-public class MainMenu implements Screen {
+public class MainMenuScreen implements Screen {
     private UnnamedGame game;
 
     private Sprite sprite;
@@ -34,7 +34,7 @@ public class MainMenu implements Screen {
     private ClickListener optionsClickListener;
     private ClickListener exitClickListener;
 
-    public MainMenu(final UnnamedGame game){
+    public MainMenuScreen(final UnnamedGame game){
         this.game = game;
     }
 
@@ -61,8 +61,7 @@ public class MainMenu implements Screen {
         startClickListener = new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                //TODO
-                //game.setScreen();
+                game.setScreen(new GameScreen());
             }
         };
         optionsClickListener = new ClickListener(){
