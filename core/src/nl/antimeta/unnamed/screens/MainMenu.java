@@ -2,10 +2,8 @@ package nl.antimeta.unnamed.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.*;
+import com.badlogic.gdx.graphics.g2d.*;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
@@ -17,6 +15,11 @@ import nl.antimeta.unnamed.UnnamedGame;
 
 public class MainMenu implements Screen {
     private UnnamedGame game;
+
+    private Sprite sprite;
+    private SpriteBatch batch;
+    private Texture menuBackground;
+    private Camera camera;
 
     private Stage stage;
     private TextureAtlas atlas;
@@ -81,9 +84,13 @@ public class MainMenu implements Screen {
     public void show() {
         stage = new Stage();
 
+        sprite = new Sprite();
+        batch = new SpriteBatch();
+        menuBackground = new Texture(Gdx.files.internal("ui/menu/background.jpg"));
+
         Gdx.input.setInputProcessor(stage);
 
-        atlas = new TextureAtlas("ui/button.pack");
+        atlas = new TextureAtlas("ui/menu/button.pack");
         skin = new Skin(atlas);
 
         table = new Table(skin);
@@ -116,12 +123,21 @@ public class MainMenu implements Screen {
         Gdx.gl.glClearColor(0,0,0,1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
+        batch.begin();
+        //sprite.setSize(1f, 1f * sprite.getHeight() / sprite.getWidth() );
+        batch.draw(menuBackground, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        batch.end();
+
         stage.act(delta);
         stage.draw();
     }
 
     @Override
     public void resize(int width, int height) {
+        stage.getViewport().update(width, height);
+        batch.begin();
+        batch.draw(menuBackground, 0, 0, width, height);
+        batch.end();
     }
 
     @Override

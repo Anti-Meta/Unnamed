@@ -7,9 +7,10 @@ import nl.antimeta.unnamed.UnnamedGame;
 public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-		config.vSyncEnabled = true;
 		config.width = 1280;
 		config.height = 720;
+		config.vSyncEnabled = true;
+		config.fullscreen = true;
 		new LwjglApplication(new UnnamedGame(), config);
 	}
 }
