@@ -16,10 +16,8 @@ import nl.antimeta.unnamed.UnnamedGame;
 public class MainMenuScreen implements Screen {
     private UnnamedGame game;
 
-    private Sprite sprite;
     private SpriteBatch batch;
     private Texture menuBackground;
-    private Camera camera;
 
     private Stage stage;
     private TextureAtlas atlas;
@@ -67,8 +65,7 @@ public class MainMenuScreen implements Screen {
         optionsClickListener = new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                //TODO
-                //game.setScreen();
+                game.setScreen(new OptionsScreen());
             }
         };
         exitClickListener = new ClickListener(){
@@ -83,7 +80,6 @@ public class MainMenuScreen implements Screen {
     public void show() {
         stage = new Stage();
 
-        sprite = new Sprite();
         batch = new SpriteBatch();
         menuBackground = new Texture(Gdx.files.internal("ui/menu/background.jpg"));
 
