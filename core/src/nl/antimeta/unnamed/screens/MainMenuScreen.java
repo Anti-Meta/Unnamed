@@ -39,13 +39,10 @@ public class MainMenuScreen implements Screen {
     private void createButtons(){
         startButton = new TextButton("Start", textButtonStyle);
         startButton.addListener(startClickListener);
-        startButton.pad(20);
         optionsButton = new TextButton("Options", textButtonStyle);
         optionsButton.addListener(optionsClickListener);
-        optionsButton.pad(20);
         exitButton = new TextButton("Exit", textButtonStyle);
         exitButton.addListener(exitClickListener);
-        exitButton.pad(20);
     }
 
     private void createButtonTextStyle(){
