@@ -11,7 +11,7 @@ public class OptionsScreen implements Screen {
     @Override
     public void show() {
         stage = new Stage();
-
+        Gdx.input.setInputProcessor(stage);
         //TODO Je construct.
         //Maak hier de buttons, de onclicklisteners(code die uitgevoerd wordt als je op een knop clickt), de table van de buttons.
     }
