@@ -37,8 +37,8 @@ public class Game2Screen implements Screen {
 
     @Override
     public void show() {
-        noise = NoiseUtil.generateWhiteNoise(10, 10);
-        smoothNoise = NoiseUtil.generateSmoothNoise(noise, 2);
+        //noise = NoiseUtil.generateWhiteNoise(10, 10);
+        //smoothNoise = NoiseUtil.generateSmoothNoise(noise, 2);
 
         modelBatch = new ModelBatch();
         environment = new Environment();

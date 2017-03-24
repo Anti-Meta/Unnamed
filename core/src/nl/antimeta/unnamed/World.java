@@ -44,7 +44,7 @@ public class World implements RenderableProvider {
         this.meshes = new Mesh[chunksX * chunksY * chunksZ];
         this.dirty = new boolean[chunksX * chunksY * chunksZ];
         this.numVertices = new int[chunksX * chunksY * chunksZ];
-        this.vertices = new float[VoxelChunk.VERTEX_SIZE * 6 * CHUNK_SIZE * CHUNK_SIZE * CHUNK_SIZE];
+        this.vertices = new float[6 * 6 * CHUNK_SIZE * CHUNK_SIZE * CHUNK_SIZE];
         this.materials = new Material[chunksX * chunksY * chunksZ];
 
         this.chunksX = chunksX;
