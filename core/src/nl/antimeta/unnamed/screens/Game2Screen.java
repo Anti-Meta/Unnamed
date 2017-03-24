@@ -13,7 +13,6 @@ import com.badlogic.gdx.graphics.g3d.environment.DirectionalLight;
 import com.badlogic.gdx.graphics.g3d.utils.FirstPersonCameraController;
 import com.badlogic.gdx.graphics.g3d.utils.ModelBuilder;
 import com.badlogic.gdx.utils.Array;
-import nl.antimeta.unnamed.utils.NoiseUtil;
 
 public class Game2Screen implements Screen {
 

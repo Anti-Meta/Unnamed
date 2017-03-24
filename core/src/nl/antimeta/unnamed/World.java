@@ -8,10 +8,10 @@ import com.badlogic.gdx.graphics.g3d.Material;
 import com.badlogic.gdx.graphics.g3d.Renderable;
 import com.badlogic.gdx.graphics.g3d.RenderableProvider;
 import com.badlogic.gdx.graphics.g3d.attributes.ColorAttribute;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Pool;
 import nl.antimeta.unnamed.models.Chunk;
-import nl.antimeta.unnamed.models.VoxelChunk;
 import nl.antimeta.unnamed.utils.ChunkUtil;
 
 public class World implements RenderableProvider {
@@ -34,6 +34,7 @@ public class World implements RenderableProvider {
     public final Material[] materials;
 
     public int renderedChunks;
+    public int numberOfChunks;
 
     private World(int chunkSize, int chunksX, int chunksY, int chunksZ){
         //Used to easily get the chunk size
@@ -46,6 +47,8 @@ public class World implements RenderableProvider {
         this.numVertices = new int[chunksX * chunksY * chunksZ];
         this.vertices = new float[6 * 6 * CHUNK_SIZE * CHUNK_SIZE * CHUNK_SIZE];
         this.materials = new Material[chunksX * chunksY * chunksZ];
+
+        this.numberOfChunks = chunksX * chunksY * chunksZ;
 
         this.chunksX = chunksX;
         this.chunksY = chunksY;
@@ -87,7 +90,8 @@ public class World implements RenderableProvider {
 
                     dirty[i] = true;
                     numVertices[i] = 0;
-                    materials[i] = new Material(new ColorAttribute(ColorAttribute.Diffuse, Color.GREEN));
+                    materials[i] =  new Material(new ColorAttribute(ColorAttribute.Diffuse, MathUtils.random(0.5f, 1f), MathUtils.random(
+                            0.5f, 1f), MathUtils.random(0.5f, 1f), 1));
                     i++;
                 }
             }
@@ -132,7 +136,7 @@ public class World implements RenderableProvider {
                 dirty[i] = false;
             }
 
-            if(numVertices[i] != 0){
+            if(numVertices[i] == 0){
                 Renderable renderable = pool.obtain();
                 renderable.material = materials[i];
                 renderable.meshPart.mesh = mesh;
@@ -147,7 +151,7 @@ public class World implements RenderableProvider {
         }
     }
 
-    public class WorldBuilder {
+    public static class WorldBuilder {
         private World world;
         private final int chunkSize;
         private int chunksX;
